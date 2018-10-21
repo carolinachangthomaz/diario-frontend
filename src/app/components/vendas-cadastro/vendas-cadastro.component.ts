@@ -13,7 +13,7 @@ export class VendasCadastroComponent implements OnInit {
   constructor(private vendaService:VendasService) { }
 
   ngOnInit() {
-    this.vendaService.listar().subscribe(
+    this.vendaService.listarClientes().subscribe(
       (response)  => this.clientes = response
       );
   }
