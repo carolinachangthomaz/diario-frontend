@@ -1,6 +1,7 @@
 <app-navbar></app-navbar>
 
-<app-vendas-cadastro></app-vendas-cadastro>
+<p-growl></p-growl>
+<app-vendas-cadastro (vendaSalva)="listagem.listar()"></app-vendas-cadastro>
 
-<app-vendas-lista></app-vendas-lista>
+<app-vendas-lista #listagem></app-vendas-lista>
 

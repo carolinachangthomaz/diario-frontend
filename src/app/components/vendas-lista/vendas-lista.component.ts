@@ -8,12 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VendasListaComponent implements OnInit {
 
-  pedidos: Array<any>;
+  vendas: Array<any>;
   constructor(private vendaService:VendasService) { }
 
   ngOnInit() {
+    this.listar();
+  }
+
+  listar(){
     this.vendaService.listar().subscribe(
-      (response)  => this.pedidos = response
+      (response)  => this.vendas = response
       );
   }
 

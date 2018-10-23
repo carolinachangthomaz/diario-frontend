@@ -1,6 +1,9 @@
 <div class="ui-g">
   <div class="ui-g-12">
-    <p-table [value]="pedidos">
+    <p-table [value]="vendas" responsive="true">
+        <ng-template pTemplate="caption">
+          Listagem de venda
+          </ng-template>
        <ng-template pTemplate="header">
           <tr>
              <th class="col-header-id">Código</th>
@@ -12,10 +15,22 @@
 
        <ng-template pTemplate="body" let-venda>
           <tr>
-             <td>{{ venda.id }}</td>
-             <td>{{ venda.cliente.nome}}</td>
-             <td class="col-data">{{ venda.instance}}</td>
-             <td class="col-numero">{{ venda.valorTotal | number: '1.2-2'}}</td>
+             <td>
+               <span class="ui-colum-title">Código</span>
+               {{ venda.id }}
+              </td>
+             <td>
+                <span class="ui-colum-title">Cliente</span>
+               {{ venda.cliente.nome}}
+              </td>
+             <td class="col-data">
+                <span class="ui-colum-title">Cadastro</span>
+               {{ venda.cadastro | date: 'dd/MM/yyyy'}}
+              </td>
+             <td class="col-numero">
+                <span class="ui-colum-title">Total</span>
+               {{ venda.total | number: '1.2-2'}}
+              </td>
           </tr>
        </ng-template>
     </p-table>
