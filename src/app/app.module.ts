@@ -14,6 +14,8 @@ import { MessageService } from 'primeng/components/common/messageservice';
 import { TableModule } from 'primeng/table';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+
 import { PanelModule } from 'primeng/panel';
 import { ButtonModule } from 'primeng/button';
 import { GrowlModule } from 'primeng/growl';
@@ -22,6 +24,8 @@ import { GrowlModule } from 'primeng/growl';
 import { AppComponent } from './app.component';
 import { VendasListaComponent } from './components/vendas-lista/vendas-lista.component';
 import { VendasCadastroComponent } from './components/vendas-cadastro/vendas-cadastro.component';
+import { DiarioListaComponent } from './components/diario-lista/diario-lista.component';
+import { DiarioCadastroComponent } from './components/diario-cadastro/diario-cadastro.component';
 
 registerLocaleData(localPt);
 
@@ -30,7 +34,9 @@ registerLocaleData(localPt);
     AppComponent,
     NavbarComponent,
     VendasListaComponent,
-    VendasCadastroComponent
+    VendasCadastroComponent,
+    DiarioListaComponent,
+    DiarioCadastroComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +44,7 @@ registerLocaleData(localPt);
     TableModule,
     FormsModule,
     DropdownModule,
+    InputTextareaModule,
     PanelModule,
     ButtonModule,
     GrowlModule,

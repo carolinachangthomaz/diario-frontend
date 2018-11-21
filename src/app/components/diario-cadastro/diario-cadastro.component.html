@@ -1,0 +1,23 @@
+
+<form autocomplete="off" #frm="ngForm" (ngSubmit)="adicionar(frm)">
+  <div class="ui-g">
+    <div class="ui-g-12 ui-sm-12 ui-fluid">
+      <label>Vou aprender a palavra:</label>
+      <input pInputText id="palavra" name="palavra"
+      [(ngModel)]="texto.palavra" required 
+      />
+    </div>
+
+    <div class="ui-g-12 ui-sm-12 ui-fluid">
+      <label>Exemplo:</label>
+      <textarea pInputTextarea id="obs" name="obs"  [(ngModel)]="texto.obs" required></textarea>
+    </div>
+
+    <div class="ui-g-4">
+      <button pButton icon="pi pi-check" label="Salvar"
+       [disabled]="frm.invalid">
+      </button>  
+    </div>
+
+  </div>
+</form>
