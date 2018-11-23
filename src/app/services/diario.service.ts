@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 })
 export class DiarioService {
 
-  private api = 'https://app-diario.herokuapp.com/';
+  private api = 'http://localhost:8080';
 
   constructor(private http: HttpClient) { }
 

@@ -1,5 +1,8 @@
+import { filter } from 'rxjs/operators';
+import { Diario } from './../../model/diario';
 import { DiarioService } from './../../services/diario.service';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-diario-lista',
@@ -8,7 +11,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DiarioListaComponent implements OnInit {
 
-  diario: Array<any>;
+  diario: Diario[] ;
+  
   constructor(private diarioService: DiarioService) { }
 
   ngOnInit() {
@@ -17,8 +21,10 @@ export class DiarioListaComponent implements OnInit {
 
   listar(){
     this.diarioService.listar().subscribe(
-      (response)  => this.diario = response
+      (response)  => {
+        this.diario = response
+       }
       );
   }
-
+ 
 }

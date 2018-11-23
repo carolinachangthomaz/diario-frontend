@@ -4,6 +4,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 import { MessageService } from 'primeng/components/common/messageservice';
+import { Diario } from '../../model/diario';
 
 @Component({
   selector: 'app-diario-cadastro',
@@ -12,7 +13,11 @@ import { MessageService } from 'primeng/components/common/messageservice';
 })
 export class DiarioCadastroComponent implements OnInit {
 
+  diario: Diario[] ;
   texto = {};
+  hoje: string;
+  show: boolean = true;
+  
  
   @Output() vendaSalva = new EventEmitter();
 
@@ -20,6 +25,10 @@ export class DiarioCadastroComponent implements OnInit {
     private messageService: MessageService) { }
 
   ngOnInit() {
+    this.listarPalavras();
+
+   
+        this.fromJsonDate();
   }
 
   novaPalavra() {
@@ -34,9 +43,40 @@ export class DiarioCadastroComponent implements OnInit {
         this.novaPalavra();
 
 
-        this.messageService.add({ severity: 'success' , detail: 'venda adicionada com sucesso'});
+        this.messageService.add({ severity: 'success' , detail: 'Parabéns!!! Você aprendeu + 1 Palavra'});
         this.vendaSalva.emit(response);
+        this.show = false;
       });
+  }
 
-}
+  listarPalavras(){
+    this.diarioService.listar().subscribe(
+      (response)  => {
+        this.diario = response
+       
+        this.findChoicesIn(this.diario);
+        console.log(this.show);
+      }
+      );
+ 
+  }
+
+  fromJsonDate() {
+    const bDate: Date = new Date();
+    this.hoje = bDate.toLocaleString().substring(0, 10);  //Ignore time
+  }
+
+  findChoicesIn(list) {
+    let show:boolean = true;
+    let hoje = String(this.hoje);
+    list.filter(function(i) {
+        let date = String(i.date);
+        date.indexOf(hoje);
+       if(date === hoje){
+        show = false;
+       }
+    });
+    
+    this.show = show;
+  };
 }

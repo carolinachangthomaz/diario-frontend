@@ -7,8 +7,8 @@
        <ng-template pTemplate="header">
           <tr>
              <th>Palavra</th>
+             <th>Exemplo</th>
              <th>Data</th>
-          
           </tr>
        </ng-template>
 
@@ -17,8 +17,11 @@
              <td>
                {{ diario.palavra}}
               </td>
+              <td>
+                {{ diario.obs}}
+               </td>
              <td class="col-data">
-               {{ diario.date | date: 'dd/MM/yyyy'}}
+               {{ diario.date}}
               </td>
           </tr>
        </ng-template>
