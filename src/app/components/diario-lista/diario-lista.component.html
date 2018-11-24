@@ -6,21 +6,25 @@
         </ng-template>
        <ng-template pTemplate="header">
           <tr>
+             <th>Nº</th>
              <th>Palavra</th>
              <th>Exemplo</th>
              <th>Data</th>
           </tr>
        </ng-template>
 
-       <ng-template pTemplate="body" let-diario>
+       <ng-template pTemplate="body" let-diario let-rowIndex="rowIndex">
           <tr>
+             <td>
+               {{ rowIndex + 1 }}
+             </td>
              <td>
                {{ diario.palavra}}
               </td>
               <td>
-                {{ diario.obs}}
-               </td>
-             <td class="col-data">
+               {{ diario.obs}}
+              </td>
+              <td class="col-data">
                {{ diario.date}}
               </td>
           </tr>
@@ -28,7 +32,7 @@
 
        <ng-template pTemplate="emptymessage">
           <tr>
-            <td colspan="2">Nenhuma palavra cadastrada</td>
+            <td colspan="3">Nenhuma palavra cadastrada</td>
           </tr>
         </ng-template>
 

@@ -23,8 +23,17 @@ export class DiarioListaComponent implements OnInit {
     this.diarioService.listar().subscribe(
       (response)  => {
         this.diario = response
+        this.diario.sort(this.compare);
        }
       );
   }
  
+  compare(a,b) {
+    if (a.date > b.date)
+      return -1;
+    if (a.date < b.date)
+      return 1;
+    return 0;
+  }
+
 }
