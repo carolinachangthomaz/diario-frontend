@@ -1,10 +1,10 @@
+import { Diario } from './../../model/diario';
 import { DiarioService } from './../../services/diario.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { FormGroup } from '@angular/forms';
 
 import { MessageService } from 'primeng/components/common/messageservice';
-import { Diario } from '../../model/diario';
 
 @Component({
   selector: 'app-diario-cadastro',
@@ -19,7 +19,7 @@ export class DiarioCadastroComponent implements OnInit {
   show: boolean = true;
   
  
-  @Output() vendaSalva = new EventEmitter();
+  @Output() palavraSalva = new EventEmitter();
 
   constructor(private diarioService: DiarioService,
     private messageService: MessageService) { }
@@ -41,11 +41,21 @@ export class DiarioCadastroComponent implements OnInit {
       {
         frm.reset();
         this.novaPalavra();
+        var cadastro = new Diario();
+        cadastro = response;
 
+        console.log(cadastro.id);
+        if(cadastro.id != null){
+          this.messageService.add({ severity: 'success' , detail: 'Parabéns!!! Você aprendeu + 1 Palavra'});
+          this.palavraSalva.emit(response);
+           this.show = false;
+        }else{
+          this.messageService.add({ severity: 'warn' , detail: 'Iniciando o jogo de palavras'});
+          this.palavraSalva.emit(response);
+        }
 
-        this.messageService.add({ severity: 'success' , detail: 'Parabéns!!! Você aprendeu + 1 Palavra'});
-        this.vendaSalva.emit(response);
-        this.show = false;
+       
+        
       });
   }
 
