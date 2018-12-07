@@ -23,7 +23,7 @@ export class DiarioListaComponent implements OnInit {
     this.diarioService.listar().subscribe(
       (response)  => {
         this.diario = response
-        this.diario.sort(this.compare);
+        //this.diario.sort(this.compare);
        }
       );
   }

@@ -26,9 +26,7 @@ export class DiarioCadastroComponent implements OnInit {
 
   ngOnInit() {
     this.listarPalavras();
-
-   
-        this.fromJsonDate();
+    this.fromJsonDate();
   }
 
   novaPalavra() {
@@ -46,10 +44,12 @@ export class DiarioCadastroComponent implements OnInit {
 
         console.log(cadastro.id);
         if(cadastro.id != null){
+          console.log(this.diario.length);
           this.messageService.add({ severity: 'success' , detail: 'Parabéns!!! Você aprendeu + 1 Palavra'});
           this.palavraSalva.emit(response);
            this.show = false;
         }else{
+          console.log(this.diario.length);
           this.messageService.add({ severity: 'warn' , detail: 'Iniciando o jogo de palavras'});
           this.palavraSalva.emit(response);
         }
@@ -81,6 +81,7 @@ export class DiarioCadastroComponent implements OnInit {
     let hoje = String(this.hoje);
     list.filter(function(i) {
         let date = String(i.date);
+        console.log("date : " + date + " Hoje "+hoje );
         date.indexOf(hoje);
        if(date === hoje){
         show = false;
